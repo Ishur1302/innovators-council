@@ -5,7 +5,7 @@ import os
 from PIL import Image
 
 app = Flask(__name__)
-model = YOLO("yolov8m.pt")  # Nano model for speed
+model = YOLO("yolov8s.pt")  # Nano model for speed
 
 @app.route('/detect', methods=['POST'])
 def detect():
