@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../api/api";
+import axios from "axios"; // Make sure to import axios
 
 export default function QuerySubmission() {
     const [query, setQuery] = useState("");
@@ -11,7 +11,8 @@ export default function QuerySubmission() {
         setLoading(true);
         setResult(null);
         try {
-            const res = await api.post("/queries", { content: query });
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+            const res = await axios.post(`${backendUrl}/api/queries`, { query }); // <-- use 'query'
             setResult(res.data);
             setQuery("");
         } catch {
