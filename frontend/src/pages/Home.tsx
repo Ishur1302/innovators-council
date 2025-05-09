@@ -1,5 +1,6 @@
 // src/pages/Home.tsx
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     return (
@@ -28,12 +29,12 @@ export default function Home() {
                         <p className="text-grape-700 text-sm font-body">Review past queries and agent responses anytime.</p>
                     </div>
                 </div>
-                <a
-                    href="/submit"
+                <Link
+                    to="/submit"
                     className="inline-block mt-10 px-10 py-4 bg-gradient-to-r from-teal-500 to-grape-500 text-white font-display text-xl rounded-4xl shadow-neon hover:scale-105 transition"
                 >
                     Get Started
-                </a>
+                </Link>
             </div>
         </section>
     );
