@@ -26,7 +26,10 @@ export default function YOLOv8Demo() {
         formData.append("image", image);
         try {
             // Use your backend port (5001)
-            const res = await axios.post("http://localhost:5001/api/yolo-detect", formData);
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+
+            const res = await axios.post(`${backendUrl}/api/yolo-detect`, formData);
             setDetections(res.data.detections);
         } catch (err) {
             alert("Detection failed.");
