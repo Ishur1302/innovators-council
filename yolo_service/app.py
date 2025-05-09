@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from ultralytics import YOLO
 import numpy as np
+import os
 from PIL import Image
 
 app = Flask(__name__)
@@ -24,5 +25,8 @@ def detect():
         })
     return jsonify({"detections": detections})
 
-if __name__ == '__main__':
-    app.run(port=5002)
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
