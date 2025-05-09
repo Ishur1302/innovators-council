@@ -12,7 +12,8 @@ export default function QuerySubmission() {
         setResult(null);
         try {
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
-            const res = await axios.post(`${backendUrl}/api/queries`, { query }); // <-- use 'query'
+            // Send as { content: query } to match backend expectation
+            const res = await axios.post(`${backendUrl}/api/queries`, { content: query });
             setResult(res.data);
             setQuery("");
         } catch {
