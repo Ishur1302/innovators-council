@@ -16,7 +16,12 @@ router.post("/yolo-detect", upload.single("image"), async (req, res) => {
     try {
         const form = new FormData();
         form.append("image", fs.createReadStream(file.path));
-        const yoloRes = await axios.post("http://localhost:5002/detect", form, {
+
+        // Use environment variable for YOLO API URL, fallback to local for dev
+        const YOLO_API_URL =
+            process.env.YOLO_API_URL || "http://localhost:5002/detect";
+
+        const yoloRes = await axios.post(YOLO_API_URL, form, {
             headers: form.getHeaders(),
         });
         res.json({ detections: yoloRes.data.detections });
