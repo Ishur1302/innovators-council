@@ -1,0 +1,11 @@
+{
+  "name": "jedi-council-selenium",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node tests/querySubmission.test.js"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.10.0",
+    "chromedriver": "^115.0.0"
+  }
+}
